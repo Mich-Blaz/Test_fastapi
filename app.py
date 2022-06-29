@@ -39,12 +39,13 @@ def predict_banknote(data:BankNote):
     entropy=data['entropy']
    # print(classifier.predict_proba([[variance,skewness,curtosis,entropy]]))
     prediction = classifier.predict_proba([[variance,skewness,curtosis,entropy]])
+    pred = classifier.predict([[variance,skewness,curtosis,entropy]])
     if(prediction[0][0]>0.5):
-        prediction="Fake note score "+str(prediction[0][0])
+        predictiontxt="True Bank note score "+str(prediction[0][0])
     else:
-        prediction="Its a Bank note score "+str(prediction[0][0])
+        predictiontxt="Fake note score "+str(prediction[0][1])
     return {
-        'prediction': prediction
+        'prediction': predictiontxt,'pred_proba':prediction.max(),'predd': int(pred[0])
     }
 
 # 5. Run the API with uvicorn
