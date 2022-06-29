@@ -14,19 +14,20 @@ import pickle
 import pandas as pd
 # 2. Create the app object
 app = FastAPI()
-pickle_in = open("classifier.pkl","rb")
+pickle_in = open("clf_pipeline.pkl","rb")
 classifier=pickle.load(pickle_in)
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get('/')
 def index():
-    return {'message': 'Hello, World'}
+    return {'message': 'It is an API for prediction classification.'}
 
 # 4. Route with a single parameter, returns the parameter within a message
 #    Located at: http://127.0.0.1:8000/AnyNameHere
 @app.get('/{name}')
 def get_name(name: str):
-    return {'Welcome To Krish Youtube Channel': f'{name}'}
+    return {'Welcome to my first api deployment with fastapi by MichelBlazevic and inspired by 
+krishnaik': f'{name}'}
 
 # 3. Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
