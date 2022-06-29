@@ -26,8 +26,7 @@ def index():
 #    Located at: http://127.0.0.1:8000/AnyNameHere
 @app.get('/{name}')
 def get_name(name: str):
-    return {'Welcome to my first api deployment with fastapi by MichelBlazevic and inspired by 
-krishnaik': f'{name}'}
+    return {'Welcome to my first api deployment with fastapi by MichelBlazevic and inspired by krishnaik': f'{name}'}
 
 # 3. Expose the prediction functionality, make a prediction from the passed
 #    JSON data and return the predicted Bank Note with the confidence
