@@ -37,12 +37,12 @@ def predict_banknote(data:BankNote):
     skewness=data['skewness']
     curtosis=data['curtosis']
     entropy=data['entropy']
-   # print(classifier.predict([[variance,skewness,curtosis,entropy]]))
-    prediction = classifier.predict([[variance,skewness,curtosis,entropy]])
-    if(prediction[0]>0.5):
-        prediction="Fake note"
+   # print(classifier.predict_proba([[variance,skewness,curtosis,entropy]]))
+    prediction = classifier.predict_proba([[variance,skewness,curtosis,entropy]])
+    if(prediction[0][0]>0.5):
+        prediction="Fake note score "+str(prediction[0][0])
     else:
-        prediction="Its a Bank note"
+        prediction="Its a Bank note score "+str(prediction[0][0])
     return {
         'prediction': prediction
     }
